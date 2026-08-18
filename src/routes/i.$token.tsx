@@ -40,11 +40,7 @@ function InvitePage() {
     queryFn: () => fetchInvite({ data: { token } }),
   });
 
-  async function answer(
-    guestId: string,
-    rsvp: "yes" | "no",
-    transport: "own" | "bus" | null,
-  ) {
+  async function answer(guestId: string, rsvp: "yes" | "no", transport: "own" | "bus" | null) {
     setBusy(true);
     const res = await respond({ data: { token, guestId, rsvp, transport } });
     setBusy(false);
@@ -109,8 +105,7 @@ function InvitePage() {
 
         <div className="mt-8 space-y-6">
           {members.map((guest) => {
-            const busFull =
-              seatsLeft <= 0 && !(guest.transport === "bus" && guest.rsvp === "yes");
+            const busFull = seatsLeft <= 0 && !(guest.transport === "bus" && guest.rsvp === "yes");
             return (
               <div
                 key={guest.id}

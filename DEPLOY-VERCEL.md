@@ -1,18 +1,22 @@
 # Хостирање на Vercel
 
 ## 1. Отпакувај и стави на GitHub
+
 unzip rodenden-app.zip
 cd rodenden-app
 git init && git add . && git commit -m "init"
+
 # создај repo на GitHub и push-ни
 
 ## 2. Vercel
+
 - New Project -> import repo
 - Framework preset: **Other**
-- Build command: `npm run build`  (или `bun run build`)
+- Build command: `npm run build` (или `bun run build`)
 - Output: остави автоматски
 
 ## 3. Environment Variables (Settings -> Environment Variables)
+
 NITRO_PRESET=vercel
 VITE_SUPABASE_URL=https://mnpprbgzkpbntizmiobi.supabase.co
 VITE_SUPABASE_PUBLISHABLE_KEY=sb_publishable_A9ZWLwa0XCTFrsRhJ05Byw_ckLK_9v4

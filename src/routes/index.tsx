@@ -70,7 +70,9 @@ function AdminPage() {
   }
 
   if (!data || data.locked) {
-    return <UnlockCard onUnlocked={() => queryClient.invalidateQueries({ queryKey: ["admin-data"] })} />;
+    return (
+      <UnlockCard onUnlocked={() => queryClient.invalidateQueries({ queryKey: ["admin-data"] })} />
+    );
   }
 
   return <Dashboard data={data} />;
@@ -91,7 +93,9 @@ function UnlockCard({ onUnlocked }: { onUnlocked: () => void }) {
       return;
     }
     toast.error(
-      res.reason === "unset" ? "Сè уште не е поставена лозинка." : "Грешна лозинка, обиди се повторно.",
+      res.reason === "unset"
+        ? "Сè уште не е поставена лозинка."
+        : "Грешна лозинка, обиди се повторно.",
     );
     setPassword("");
   }
@@ -266,8 +270,7 @@ function Dashboard({ data }: { data: AdminData }) {
       <section className="card-panel mb-6 p-6">
         <h2 className="mb-1 text-2xl">Групна покана</h2>
         <p className="mb-4 text-sm text-muted-foreground">
-          Еден линк за цело семејство или друштво — секој член одговара за себе на истата
-          страница.
+          Еден линк за цело семејство или друштво — секој член одговара за себе на истата страница.
         </p>
         <form
           className="grid gap-3 sm:grid-cols-2"
@@ -386,7 +389,12 @@ function Dashboard({ data }: { data: AdminData }) {
         <div className="grid gap-4 sm:grid-cols-2">
           <div className="space-y-2">
             <Label htmlFor="title">Наслов на забавата</Label>
-            <Input id="title" value={title} maxLength={120} onChange={(e) => setTitle(e.target.value)} />
+            <Input
+              id="title"
+              value={title}
+              maxLength={120}
+              onChange={(e) => setTitle(e.target.value)}
+            />
           </div>
           <div className="space-y-2">
             <Label htmlFor="seats">Седишта во автобусот (вкупно)</Label>
@@ -415,7 +423,11 @@ function Dashboard({ data }: { data: AdminData }) {
             />
           </div>
         </div>
-        <Button className="mt-4" onClick={() => settingsMutation.mutate()} disabled={settingsMutation.isPending}>
+        <Button
+          className="mt-4"
+          onClick={() => settingsMutation.mutate()}
+          disabled={settingsMutation.isPending}
+        >
           Зачувај поставки
         </Button>
       </section>
