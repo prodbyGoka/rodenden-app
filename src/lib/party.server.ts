@@ -30,7 +30,6 @@ export async function getSession() {
   return useSession<AdminSession>(sessionConfig());
 }
 
-
 export async function isUnlocked(): Promise<boolean> {
   const session = await getSession();
   return session.data.unlocked === true;

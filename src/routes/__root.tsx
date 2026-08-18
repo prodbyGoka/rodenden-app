@@ -8,11 +8,11 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
+import { Analytics } from "@vercel/analytics/react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Toaster } from "@/components/ui/sonner";
-
 
 function NotFoundComponent() {
   return (
@@ -20,9 +20,7 @@ function NotFoundComponent() {
       <div className="max-w-md text-center">
         <h1 className="text-7xl font-bold text-foreground">404</h1>
         <h2 className="mt-4 text-xl font-semibold text-foreground">Страницата не е најдена</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Страницата не постои или е преместена.
-        </p>
+        <p className="mt-2 text-sm text-muted-foreground">Страницата не постои или е преместена.</p>
         <div className="mt-6">
           <Link
             to="/"
@@ -122,6 +120,7 @@ function RootShell({ children }: { children: ReactNode }) {
       <body>
         {children}
         <Scripts />
+        <Analytics />
       </body>
     </html>
   );
@@ -138,4 +137,3 @@ function RootComponent() {
     </QueryClientProvider>
   );
 }
-
